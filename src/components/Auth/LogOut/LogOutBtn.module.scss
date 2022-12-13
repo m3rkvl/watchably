@@ -1,0 +1,39 @@
+@import "../../../util/variables";
+@import "../../../util/mixins";
+
+.logOutBtn {
+  border: none;
+  background: none;
+  border-radius: $br-sm;
+  padding: $sp-tn;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & span {
+    z-index: 1;
+  }
+
+  .user {
+    font-weight: 600;
+    font-size: $fs-def;
+    line-height: $fs-sm;
+    color: $color-t;
+  }
+
+  @include btnBackgroundColorChange(
+    none,
+    $color-t,
+    $color-wh,
+    $color-wh,
+    $br-sm
+  );
+
+  &:hover {
+    & .user {
+      color: $color-wh;
+    }
+  }
+}

@@ -1,0 +1,373 @@
+@import "../util/variables";
+@import "../util/mixins";
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $sp-sm-1;
+  padding: $sp-md-2 $sp-bg;
+  height: calc(100vh - 16rem);
+  align-self: center;
+
+  @media (max-width: 35rem) {
+    width: calc(100vw - 4.8rem);
+  }
+
+  @media (max-width: 35rem) {
+    margin-top: -3rem;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $sp-sm-1;
+  height: 28.6rem;
+
+  @media (max-width: 35rem) {
+    width: calc(100vw - 10rem);
+  }
+
+  @media (max-width: 30rem) {
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 $sp-md-1;
+  border-radius: $br-sm;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 0.15rem inset rgba(255, 255, 255, 0.1);
+  height: 100%;
+
+  @media (max-width: 35rem) {
+    padding: 0 $sp-sm-2;
+  }
+
+  @media (max-width: 35rem) {
+    padding: $sp-sm-1;
+  }
+
+  @media (max-width: 30rem) {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 3rem;
+    justify-items: left;
+    padding: $sp-sm-1 $sp-md-2;
+  }
+}
+
+.userIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7.7rem;
+  height: 7.7rem;
+  border-radius: 50%;
+  padding: $sp-sm-1;
+  background-color: $color-wh;
+  color: $color-bl;
+  margin-bottom: $sp-sm-3;
+
+  & svg {
+    width: 6rem;
+  }
+
+  @media (max-width: 35rem) {
+    grid-row: 1 / 4;
+    margin-bottom: $sp-tn-3;
+  }
+}
+
+.userPhoto {
+  width: 7.7rem;
+  height: 7.7rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: $sp-sm-3;
+  border: 0.1rem inset rgba(255, 255, 255, 0.1);
+  filter: drop-shadow(0 0 0.4rem rgba(0, 0, 0, 0.4));
+
+  @media (max-width: 35rem) {
+    margin-bottom: $sp-sm-2;
+  }
+
+  @media (max-width: 35rem) {
+    grid-row: 1 / 4;
+    margin-bottom: $sp-tn-3;
+  }
+}
+
+.name {
+  font-size: $fs-h2;
+  margin-bottom: $sp-sm-1;
+  @media (max-width: 35rem) {
+    margin-bottom: $sp-tn;
+  }
+}
+
+.emailAlone {
+  font-size: $fs-h2;
+  margin-bottom: $sp-avg;
+  margin-top: $sp-sm-1;
+  @media (max-width: 35rem) {
+    margin-bottom: $sp-sm-3;
+  }
+}
+
+.email {
+  font-size: $fs-h3;
+  font-style: italic;
+  color: $color-gr-2;
+  margin-bottom: $sp-avg;
+  @media (max-width: 35rem) {
+    margin-bottom: $sp-sm-3;
+  }
+}
+
+.updateProfile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: $sp-bg $sp-md-1 $sp-md-1 $sp-md-1;
+  border-radius: $br-sm;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 0.15rem inset rgba(255, 255, 255, 0.1);
+  height: 100%;
+
+  @media (max-width: 30rem) {
+    align-self: flex-start;
+    width: 100%;
+    padding: $sp-bg $sp-md-1 $sp-sm-3 $sp-md-1;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-md-1;
+  width: 36rem;
+  align-items: flex-start;
+
+  @media (max-width: 35rem) {
+    width: calc(100vw - 38.6rem);
+  }
+
+  @media (max-width: 30rem) {
+    width: calc(100vw - 35rem);
+  }
+
+  @media (max-width: 23.75rem) {
+    width: calc(100vw - 19rem);
+  }
+}
+
+.fieldHolder {
+  position: relative;
+  width: 36rem;
+
+  @media (max-width: 35rem) {
+    width: 100%;
+  }
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  padding: 1rem;
+  font-size: $fs-def;
+  outline: 0.3rem solid rgba(115, 115, 115, 0.2);
+
+  border: none;
+
+  &:focus {
+    outline: 0.3rem solid $color-gr-3;
+  }
+
+  &:not(:placeholder-shown) + .label,
+  &:focus + .label {
+    top: -35%;
+    left: 0;
+    font-style: normal;
+    font-size: $fs-def;
+    font-weight: $fw-sb;
+    letter-spacing: $ls-tn;
+    color: $color-wh;
+    cursor: default;
+  }
+}
+
+.label {
+  position: absolute;
+  left: 1rem;
+  font-size: $fs-h3;
+  font-style: italic;
+  color: $color-gr-2;
+  top: 50%;
+  transform: translate(0, -50%);
+  transition: all 0.4s;
+  cursor: text;
+}
+
+.btn {
+  border: none;
+  background: none;
+  border-radius: $br-sm;
+  padding: $sp-tn $sp-sm-1;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1.8rem;
+  // margin-left: 0.2rem;
+  margin-top: -1.2rem;
+
+  & span {
+    z-index: 1;
+  }
+}
+
+.submitBtn {
+  @include btnBackgroundColorChange(
+    $color-p,
+    $color-p-d,
+    $color-wh,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.authForms {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $sp-sm-1;
+
+  @media (max-width: 35rem) {
+    width: calc(100vw - 10rem);
+  }
+}
+
+.updateEmail,
+.updatePassword {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: $sp-md-1;
+  border-radius: $br-sm;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 0.15rem inset rgba(255, 255, 255, 0.1);
+
+  @media (max-width: 35rem) {
+    padding: $sp-bg $sp-md-1 $sp-sm-3 $sp-md-1;
+  }
+}
+
+.email.emailForm {
+  width: 100%;
+}
+
+.formTitle {
+  position: absolute;
+  font-size: $fs-def;
+  font-style: italic;
+  top: $sp-tn;
+  right: $sp-tn;
+  padding: $sp-tn;
+  border-radius: $br-sm;
+  background: rgb(3, 105, 161);
+  background: linear-gradient(
+    45deg,
+    rgba($color-gr-3, 0.2) 0%,
+    rgba($color-gr-2, 0.2) 75%,
+    rgba($color-gr-3, 0.2) 100%
+  );
+  border: 0.15rem inset rgba(255, 255, 255, 0.1);
+
+  cursor: default;
+}
+
+.reAuthModal {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: $br-sm;
+  backdrop-filter: blur(1rem);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 0.3s;
+}
+
+.modalVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reAuth {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: $sp-md-1;
+  border-radius: $br-sm;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(1rem);
+
+  border: 0.15rem inset rgba(255, 255, 255, 0.2);
+}
+
+.modalTitle {
+  font-size: 1.8rem;
+  font-style: italic;
+  padding: $sp-tn;
+  border-radius: $br-sm;
+  // background: rgb($color-t);
+  background: linear-gradient(
+    45deg,
+    rgba($color-t-d, 0.4) 0%,
+    rgba($color-t, 0.4) 75%,
+    rgba($color-t-d, 0.4) 100%
+  );
+  border: 0.15rem inset rgba(255, 255, 255, 0.1);
+
+  cursor: default;
+}
+
+.modalActions {
+  display: flex;
+  gap: $sp-sm-3;
+}
+
+.cancelBtn {
+  @include btnBackgroundColorChange(
+    rgba($color-t, 0.1),
+    $color-t,
+    $color-t,
+    $color-wh,
+    $br-sm
+  );
+}

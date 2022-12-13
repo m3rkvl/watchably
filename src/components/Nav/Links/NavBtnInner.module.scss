@@ -1,0 +1,78 @@
+@import "../../../util/_variables.scss";
+@import "../../../util/_mixins.scss";
+
+.NavBtn {
+  text-decoration: none;
+  padding: $sp-sm-1;
+  width: 5.4rem;
+  height: 5.4rem;
+  overflow: hidden;
+
+  // border-radius: $br-bg;
+  border-radius: $br-sm;
+
+  background-color: $color-wh;
+  letter-spacing: $ls-def;
+  color: $color-bl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+
+  transition: border-radius 0.4s, background-color 0.4s;
+
+  & span {
+    margin-top: 0.2rem;
+  }
+
+  @media (max-width: 49.6875rem) {
+    padding: $sp-tn;
+    font-size: $fs-sm;
+  }
+
+  @media (max-width: 22.5rem) {
+    width: 4.4rem;
+    height: 4.4rem;
+  }
+}
+
+.discover {
+  @include btnBackgroundColorChange(
+    $color-wh,
+    $color-u,
+    $color-u,
+    $color-wh,
+    $br-sm
+  );
+}
+
+//prettier-ignore
+.user {
+  @include btnBackgroundColorChange($color-wh, $color-gr-3, $color-bl, $color-wh, $br-sm);
+}
+
+.active {
+  padding: $sp-sm-1;
+}
+
+.activeDiscover {
+  @include btnBackgroundColorChange(
+    $color-u,
+    $color-u-d,
+    $color-wh,
+    $color-wh,
+    $br-sm
+  );
+}
+
+//prettier-ignore
+.activeUser {
+  @include btnBackgroundColorChange($color-bl, $color-gr-3, $color-wh, $color-wh, $br-sm);
+}
+
+.userPhoto {
+  object-fit: cover;
+  object-position: center;
+  width: 200%;
+  backface-visibility: hidden;
+}

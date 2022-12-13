@@ -1,0 +1,28 @@
+@import "../../util/variables";
+
+@import "../../util/variables";
+
+.moviesList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: $sp-sm-3;
+  gap: $sp-sm-3;
+
+  @media (max-width: 67rem) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 57rem) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 34.375rem) {
+    grid-template-columns: 1fr 1fr;
+    gap: $sp-tn;
+  }
+
+  @media (max-width: 27rem) {
+    grid-template-columns: 1fr;
+  }
+}

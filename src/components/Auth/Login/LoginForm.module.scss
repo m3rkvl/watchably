@@ -1,0 +1,93 @@
+@import "../../../util/variables";
+@import "../../../util/mixins";
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-md-1;
+  width: 36rem;
+}
+
+.fieldHolder {
+  position: relative;
+  width: 36rem;
+}
+
+.loginInput {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  padding: 1rem;
+  font-size: $fs-def;
+  outline: 0.3rem solid rgba(115, 115, 115, 0.2);
+
+  border: none;
+
+  &:focus {
+    outline: 0.3rem solid $color-gr-3;
+  }
+
+  &:not(:placeholder-shown) + .loginLabel,
+  &:focus + .loginLabel {
+    top: -35%;
+    left: 0;
+    font-style: normal;
+    font-size: $fs-def;
+    font-weight: $fw-sb;
+    letter-spacing: $ls-tn;
+    color: $color-wh;
+    cursor: default;
+  }
+}
+
+.loginLabel {
+  position: absolute;
+  left: 1rem;
+  font-size: $fs-h3;
+  font-style: italic;
+  color: $color-gr-2;
+  top: 50%;
+  transform: translate(0, -50%);
+  transition: all 0.4s;
+  cursor: text;
+}
+
+.actions {
+  display: flex;
+  gap: $sp-sm-3;
+  align-items: center;
+}
+
+.btn {
+  font-family: inherit;
+  font-size: $fs-h3;
+  padding: $sp-sm-1 $sp-sm-2;
+  border-radius: $br-sm;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+
+  & span {
+    z-index: 1;
+  }
+}
+
+.submitBtn {
+  @include btnBackgroundColorChange(
+    $color-p,
+    $color-p-d,
+    $color-wh,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.forgotBtn {
+  @include btnBackgroundColorChange(
+    none,
+    $color-p-l-2,
+    $color-p,
+    $color-p,
+    $br-sm
+  );
+}

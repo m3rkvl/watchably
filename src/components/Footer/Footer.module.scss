@@ -1,0 +1,59 @@
+@import "../../util/variables";
+
+footer {
+  width: 100%;
+  height: 8rem;
+
+  display: flex;
+  gap: $sp-md-1;
+  justify-content: center;
+  align-items: flex-end;
+  padding: $sp-tn 0;
+
+  font-size: $fs-def;
+  color: $color-gr-2;
+
+  @media (max-width: 60.3125rem) {
+    justify-content: flex-start;
+    padding: 0 $sp-sm-3;
+  }
+
+  @media (max-width: 43.75rem) {
+  }
+
+  @media (max-width: 35.625rem) {
+    justify-content: flex-start;
+    align-items: flex-end;
+    font-size: $fs-sm;
+    gap: $sp-tn;
+  }
+
+  @media (max-width: 28.4375rem) {
+    justify-content: center;
+    align-items: flex-end;
+    padding: $sp-tn 0;
+  }
+}
+
+.heart {
+  color: $color-t;
+}
+.year {
+  color: $color-gr-3;
+  font-style: italic;
+  cursor: default;
+}
+
+.logo {
+  display: inline-block;
+  width: $fs-h1;
+}
+
+.merkal,
+.tmdb {
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $sp-tn;
+}

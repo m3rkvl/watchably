@@ -1,0 +1,138 @@
+@import "../../util/variables";
+@import "../../util/mixins";
+
+.container {
+  width: 100%;
+  height: calc(100vh - 16rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $sp-sm-3;
+}
+
+.searchForm {
+  width: 100%;
+  display: flex;
+  justify-self: flex-end;
+  align-items: center;
+  justify-content: center;
+}
+
+.fieldHolder {
+  position: relative;
+  width: 48rem;
+}
+
+.searchInput {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  padding: 1rem;
+  font-family: inherit;
+  font-size: $fs-def;
+  outline: 0.3rem solid rgba(115, 115, 115, 0.2);
+
+  border: none;
+
+  &:focus {
+    outline: 0.15rem solid rgba($color-wh, 0.2);
+  }
+
+  &:not(:placeholder-shown) + .searchLabel,
+  &:focus + .searchLabel {
+    top: -35%;
+    left: 0;
+    font-style: normal;
+    font-size: $fs-def;
+    font-weight: $fw-sb;
+    background: rgb(16, 185, 129);
+    background: linear-gradient(
+      45deg,
+      rgba(16, 185, 129, 1) 0%,
+      rgba(14, 165, 233, 1) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: $color-p;
+    cursor: default;
+  }
+}
+
+.searchLabel {
+  position: absolute;
+  left: 1rem;
+  font-size: $fs-h3;
+  font-style: italic;
+  color: rgba($color-bl, 0.6);
+  top: 50%;
+  transform: translate(0, -50%);
+  transition: all 0.4s;
+  cursor: text;
+}
+
+.searchSubmit {
+  border: none;
+  background: none;
+  margin-left: $sp-sm-2;
+  font-size: $fs-def;
+  padding: $sp-sm-1;
+  border-radius: $br-sm;
+  cursor: pointer;
+
+  & span {
+    z-index: 2;
+  }
+
+  @include btnBackgroundColorChange(
+    $color-p,
+    $color-wh,
+    $color-wh,
+    $color-p,
+    $br-sm
+  );
+}
+
+.searchesContainer {
+  max-width: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $sp-sm-3;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 0.15rem inset rgba(255, 255, 255, 0.1);
+  padding: $sp-sm-3 $sp-avg;
+  border-radius: $br-sm;
+}
+
+.searchesTitle {
+  font-size: $fs-h2;
+  font-weight: 400;
+}
+
+.searchesList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: $sp-sm-1;
+}
+
+.searchesItem {
+  font-size: $fs-h3;
+  font-weight: 300;
+  padding: $sp-tn;
+  background-color: rgba($color-wh, 0.1);
+  border-radius: $br-tn;
+  color: $color-wh;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: rgba($color-wh, 0.2);
+  }
+}

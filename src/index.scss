@@ -1,0 +1,67 @@
+@import "./util/variables";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  /* user-select: none; */
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  transition: font-size 0.3s;
+
+  @media (max-width: 96.25rem) {
+    font-size: 55%;
+  }
+
+  @media (max-width: 85.625rem) {
+    font-size: 45%;
+  }
+
+  @media (max-width: 24.75rem) {
+    font-size: 40%;
+  }
+
+  @media (max-width: 17.5rem) {
+    font-size: 35%;
+  }
+
+  // @media (max-width: 85.625rem) {
+  //   font-size: 50%;
+  // }
+
+  // @media (max-width: 57rem) {
+  //   font-size: 50%;
+  // }
+
+  // @media (max-width: 43.75rem) {
+  //   font-size: 50%;
+  // }
+
+  // @media (max-width: 34.375rem) {
+  //   font-size: 55%;
+  // }
+
+  // @media (max-width: 24.75rem) {
+  //   font-size: 45%;
+  // }
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: $color-bl;
+  line-height: 1;
+  font-weight: 400;
+  color: $color-wh;
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}

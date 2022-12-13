@@ -1,0 +1,239 @@
+@import "../../util/_variables.scss";
+@import "../../util/_mixins.scss";
+
+.libraryLayout {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: -4rem;
+
+  @media (max-width: 60.3125rem) {
+    margin-top: -7rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 40.625rem) {
+    margin-top: -6.4rem;
+    margin-bottom: 2.5rem;
+    gap: 1rem;
+  }
+
+  @media (max-width: 41.875rem) {
+    position: absolute;
+    top: 7rem;
+    padding: 2.6rem 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 99999;
+    transition: all 0.2s;
+
+    opacity: 0;
+    visibility: hidden;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(1rem);
+  }
+}
+
+.modalVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menuBtn {
+  opacity: 0;
+  visibility: hidden;
+  margin-top: -6rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  padding: $sp-sm-1;
+  width: 5.4rem;
+  height: 5.4rem;
+
+  // border-radius: $br-bg;
+  border-radius: $br-sm;
+
+  background-color: $color-wh;
+  font-size: $fs-def;
+  font-weight: $fw-sb;
+  line-height: 1;
+  letter-spacing: $ls-def;
+  color: $color-bl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  transition: background-color 0.4s;
+
+  & span {
+    margin-top: 0.2rem;
+  }
+
+  @include btnBackgroundColorChange(
+    $color-wh,
+    $color-wh,
+    $color-bl,
+    $color-bl,
+    $br-sm
+  );
+
+  @media (max-width: 41.875rem) {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (max-width: 38.75rem) {
+    margin-bottom: 3rem;
+  }
+}
+
+.filterBtn {
+  text-decoration: none;
+  padding: $sp-sm-1;
+  border-radius: $br-sm;
+  font-size: $fs-def;
+  font-weight: $fw-sb;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: border-radius 0.4s, background-color 0.4s;
+
+  & span {
+    user-select: none;
+    z-index: 1;
+  }
+
+  @media (max-width: 40.625rem) {
+    margin-top: 1rem;
+    margin-bottom: -1rem;
+    padding: $sp-tn;
+  }
+
+  // @media (max-width: 26.25rem) {
+  //   padding: $sp-tn;
+  // }
+}
+
+.movies {
+  @include btnBackgroundColorChange(
+    $color-wh,
+    $color-p-d,
+    $color-p-d,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.activeMovies {
+  @include btnBackgroundColorChange(
+    $color-p-d,
+    $color-p,
+    $color-wh,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.series {
+  @include btnBackgroundColorChange(
+    $color-wh,
+    $color-s-d,
+    $color-s-d,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.activeSeries {
+  @include btnBackgroundColorChange(
+    $color-s-d,
+    $color-s,
+    $color-wh,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.toWatch {
+  @include btnBackgroundColorChange(
+    $color-wh,
+    $color-p,
+    $color-p,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.activeToWatch {
+  @include btnBackgroundColorChange(
+    $color-p,
+    $color-p-d,
+    $color-wh,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.watched {
+  @include btnBackgroundColorChange(
+    $color-wh,
+    $color-s,
+    $color-s,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.activeWatched {
+  @include btnBackgroundColorChange(
+    $color-s,
+    $color-s-d,
+    $color-wh,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.favorites {
+  @include btnBackgroundColorChange(
+    $color-wh,
+    $color-t,
+    $color-t,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.activeFavorites {
+  @include btnBackgroundColorChange(
+    $color-t,
+    $color-t-d,
+    $color-wh,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.main {
+  @include btnBackgroundColorChange(
+    $color-wh,
+    $color-bl,
+    $color-bl,
+    $color-wh,
+    $br-sm
+  );
+}
+
+//prettier-ignore
+.activeMain {
+  @include btnBackgroundColorChange($color-bl, $color-gr-3, $color-wh, $color-wh, $br-sm);
+}

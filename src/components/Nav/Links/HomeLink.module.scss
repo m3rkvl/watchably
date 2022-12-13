@@ -1,0 +1,36 @@
+@import "../../../util/variables";
+
+.homeLink {
+  position: absolute;
+  top: $sp-sm-3;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 25rem;
+  z-index: 1;
+
+  @media (max-width: 60.3125rem) {
+    top: auto;
+    left: auto;
+    bottom: $sp-sm-3;
+    right: $sp-sm-3;
+    transform: translate(0, 0);
+  }
+
+  @media (max-width: 43.75rem) {
+    opacity: 0.5;
+  }
+
+  @media (max-width: 28.4375rem) {
+    width: 20rem;
+    bottom: $sp-md-2;
+    right: 50%;
+    transform: translate(50%, 0);
+  }
+
+  @media (max-width: 22.5rem) {
+  }
+}
+
+.logo {
+  width: 100%;
+}

@@ -1,0 +1,30 @@
+@import "../../util/_variables.scss";
+
+.nav {
+  width: 100vw;
+  height: 8rem;
+  padding: $sp-sm-3 $sp-md-1 $sp-sm-1 $sp-md-1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 49.6875rem) {
+    padding: $sp-sm-3 $sp-md-1 $sp-sm-1 $sp-md-1;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 43.75rem) {
+    align-items: center;
+  }
+
+  @media (max-width: 29.6875rem) {
+    padding: $sp-sm-3 $sp-sm-2 $sp-sm-1 $sp-sm-2;
+  }
+}
+
+.leftButtons,
+.rightButtons {
+  display: flex;
+  align-items: center;
+  gap: $sp-sm-1;
+}

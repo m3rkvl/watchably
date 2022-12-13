@@ -1,0 +1,82 @@
+@import "../../../util/_variables.scss";
+@import "../../../util/_mixins.scss";
+
+.NavBtn {
+  text-decoration: none;
+  padding: $sp-sm-1;
+  width: 5.4rem;
+  height: 5.4rem;
+
+  // border-radius: $br-bg;
+  border-radius: $br-sm;
+
+  background-color: $color-wh;
+  font-size: $fs-def;
+  font-weight: $fw-sb;
+  line-height: 1;
+  letter-spacing: $ls-def;
+  color: $color-bl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-color 0.4s;
+
+  & span {
+    margin-top: 0.2rem;
+  }
+
+  @media (max-width: 49.6875rem) {
+    padding: $sp-tn;
+    font-size: $fs-sm;
+  }
+
+  @media (max-width: 22.5rem) {
+    width: 4.4rem;
+    height: 4.4rem;
+  }
+}
+
+.search {
+  @include btnBackgroundColorChange(
+    $color-wh,
+    $color-p,
+    $color-p,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.library {
+  @include btnBackgroundColorChange(
+    $color-wh,
+    $color-s,
+    $color-s,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.active {
+  padding: $sp-tn;
+}
+
+.activeSearch {
+  @include btnBackgroundColorChange(
+    $color-p,
+    $color-p-d,
+    $color-wh,
+    $color-wh,
+    $br-sm
+  );
+}
+
+.activeLibrary {
+  @include btnBackgroundColorChange(
+    $color-s,
+    $color-s-d,
+    $color-wh,
+    $color-wh,
+    $br-sm
+  );
+}

@@ -1,0 +1,17 @@
+@import "../../util/variables";
+
+.loginContainer {
+  color: $color-wh;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginHeader {
+  font-size: $fs-h1;
+  margin-bottom: $sp-sm-2;
+}
+
+.loginDescription {
+  font-size: $fs-h3;
+  margin-bottom: $sp-md-2;
+}

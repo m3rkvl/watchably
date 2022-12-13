@@ -1,0 +1,17 @@
+@import "../../util/variables";
+
+.signupContainer {
+  color: $color-wh;
+  display: flex;
+  flex-direction: column;
+}
+
+.signupHeader {
+  font-size: $fs-h1;
+  margin-bottom: $sp-sm-2;
+}
+
+.signupDescription {
+  font-size: $fs-h3;
+  margin-bottom: $sp-md-2;
+}

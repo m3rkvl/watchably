@@ -1,0 +1,29 @@
+@import "../../util/variables";
+
+.searchList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: $sp-sm-3;
+
+  @media (max-width: 67rem) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 60.3125rem) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 57rem) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 34.375rem) {
+    grid-template-columns: 1fr 1fr;
+    gap: $sp-tn;
+  }
+
+  @media (max-width: 18.75rem) {
+    grid-template-columns: 1fr;
+  }
+}
