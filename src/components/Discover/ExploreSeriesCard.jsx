@@ -198,7 +198,7 @@ const ExploreSeriesCard = ({ data, index, topRated }) => {
   ]);
 
   return (
-    <div className={classes.movieCardContainer}>
+    <article className={classes.movieCardContainer}>
       <div className={classes.actions}>
         <button
           onClick={saveToWatchHandler}
@@ -287,7 +287,7 @@ const ExploreSeriesCard = ({ data, index, topRated }) => {
           alt={`${data.title} Poster`}
         />
       </Link>
-    </div>
+    </article>
   );
 };
 

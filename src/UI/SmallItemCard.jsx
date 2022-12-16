@@ -57,7 +57,7 @@ const LibraryItemCard = ({ data }) => {
   if (data.media_type === "movie") {
     genres = data?.genre_ids.map((genre) => {
       if (genre.name) return genre.name;
-      if (!genre.name) return getMovieGenre(genre);
+      else return getMovieGenre(genre);
     });
 
     const movieObj = {
@@ -195,7 +195,7 @@ const LibraryItemCard = ({ data }) => {
   if (data.media_type === "tv") {
     genres = data?.genre_ids.map((genre) => {
       if (genre.name) return genre.name;
-      if (!genre.name) return getSeriesGenre(genre);
+      else return getSeriesGenre(genre);
     });
 
     const seriesObj = {
@@ -378,7 +378,7 @@ const LibraryItemCard = ({ data }) => {
   ]);
 
   return (
-    <div className={classes.movieCardContainer}>
+    <article className={classes.movieCardContainer}>
       <div className={classes.actions}>
         <button
           onClick={saveToWatchHandler}
@@ -470,7 +470,7 @@ const LibraryItemCard = ({ data }) => {
           alt={`${data.title} Poster`}
         />
       </Link>
-    </div>
+    </article>
   );
 };
 
