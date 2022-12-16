@@ -9,8 +9,8 @@
   z-index: 1;
 
   @media (max-width: 60.3125rem) {
-    top: auto;
-    left: auto;
+    top: unset;
+    left: unset;
     bottom: $sp-sm-3;
     right: $sp-sm-3;
     transform: translate(0, 0);

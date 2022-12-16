@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import movieDefPoster from "../img/movie-poster-default.png";
 import seriesDefPoster from "../img/series-poster-default.png";
 import { Link } from "react-router-dom";
+import getMovieGenre from "../util/getMovieGenre";
+import getSeriesGenre from "../util/getSeriesGenre";
 
 import ToWatchIcon from "../icons/ToWatchIcon";
 import WatchedIcon from "../icons/WatchedIcon";
@@ -41,7 +43,7 @@ const LibraryItemCard = ({ data }) => {
   //prettier-ignore
   const coverClass = `${classes.cardCover} ${ data.media_type === "movie" ? classes.movieCover : classes.seriesCover}`;
   //prettier-ignore
-  const genres = data?.genre_ids.map(genre => genre.name);
+  let genres;
   //prettier-ignore
   const year = data?.release_date?.split("-")[0] || data?.first_air_date?.split("-")[0]
   //prettier-ignore
@@ -53,6 +55,11 @@ const LibraryItemCard = ({ data }) => {
   let userRatingHandler;
 
   if (data.media_type === "movie") {
+    genres = data?.genre_ids.map((genre) => {
+      if (genre.name) return genre.name;
+      if (!genre.name) return getMovieGenre(genre);
+    });
+
     const movieObj = {
       genre_ids: data.genre_ids || "??",
       id: data.id || "??",
@@ -186,6 +193,11 @@ const LibraryItemCard = ({ data }) => {
   }
 
   if (data.media_type === "tv") {
+    genres = data?.genre_ids.map((genre) => {
+      if (genre.name) return genre.name;
+      if (!genre.name) return getSeriesGenre(genre);
+    });
+
     const seriesObj = {
       genre_ids: data.genre_ids || "??",
       id: data.id || "??",

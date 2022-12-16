@@ -1,16 +1,19 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./LoginForm.module.scss";
 import { UserAuth } from "../../../context/AuthContext";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleIsLoggingIn } from "../../../store/ui-slice";
+import ShowIcon from "../../../icons/ShowIcon";
+import UnShowIcon from "../../../icons/UnShowIcon";
 
 const LoginForm = () => {
   const isLoggingIn = useSelector((state) => state.ui.isLoggingIn);
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [err, setErr] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const email = useRef();
+  const password = useRef();
 
   const navigate = useNavigate();
 
@@ -24,7 +27,7 @@ const LoginForm = () => {
     e.preventDefault();
     setErr(false);
     try {
-      await signIn(email, password);
+      await signIn(email.current.value, password.current.value);
       navigate("/library");
     } catch (e) {
       setErr(e.message);
@@ -36,13 +39,17 @@ const LoginForm = () => {
     e.preventDefault();
     setErr(false);
     try {
-      await resetPassword(email);
-      setEmail("");
+      await resetPassword(email.current.value);
+      // setEmail("");
       dispatch(toggleIsLoggingIn());
     } catch (e) {
       setErr(e.message);
       console.log(e.message);
     }
+  };
+
+  const showPasswordHandler = () => {
+    setShowPassword((prev) => !prev);
   };
 
   return (
@@ -57,21 +64,25 @@ const LoginForm = () => {
               placeholder=" "
               type="email"
               autoComplete="off"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
+              ref={email}
+              // onChange={(e) => setEmail(e.target.value)}
             />
             <label className={classes.loginLabel} htmlFor="loginEmail">
               Email
             </label>
           </div>
           <div className={classes.fieldHolder}>
+            <div onClick={showPasswordHandler} className={classes.showPassBtn}>
+              {showPassword ? <UnShowIcon /> : <ShowIcon />}
+            </div>
             <input
               id="loginPassword"
               className={classes.loginInput}
               placeholder=" "
-              type="password"
+              type={showPassword ? "text" : "password"}
               autoComplete="off"
-              onChange={(e) => setPassword(e.target.value)}
+              ref={password}
+              // onChange={(e) => setPassword(e.target.value)}
             />
             <label className={classes.loginLabel} htmlFor="loginPassword">
               Password
@@ -104,8 +115,9 @@ const LoginForm = () => {
               placeholder=" "
               type="email"
               autoComplete="off"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
+              // onChange={(e) => setEmail(e.target.value)}
+              ref={email}
+              // value={email}
             />
             <label className={classes.loginLabel} htmlFor="loginEmail">
               Email

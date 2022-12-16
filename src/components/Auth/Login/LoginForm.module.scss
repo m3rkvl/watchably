@@ -6,6 +6,11 @@
   flex-direction: column;
   gap: $sp-md-1;
   width: 36rem;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .fieldHolder {
@@ -90,4 +95,17 @@
     $color-p,
     $br-sm
   );
+}
+
+.showPassBtn {
+  position: absolute;
+  top: 50%;
+  right: $sp-tn;
+  transform: translate(0, -50%);
+  color: $color-gr-2;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-gr-3;
+  }
 }

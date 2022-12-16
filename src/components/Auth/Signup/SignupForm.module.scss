@@ -2,10 +2,16 @@
 @import "../../../util/mixins";
 
 .signupForm {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: $sp-md-1;
   width: 36rem;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .fieldHolder {
@@ -90,4 +96,32 @@
     $color-p,
     $br-sm
   );
+}
+
+.invalid {
+  outline: 0.3rem solid rgba($color-t, 0.6);
+}
+
+.error {
+  position: absolute;
+  bottom: 5.5rem;
+  padding: $sp-tn-2 $sp-tn;
+  border-radius: $br-sm;
+  left: 0;
+  font-size: $fs-def;
+  color: $color-t;
+  background-color: rgba($color-t, 0.2);
+}
+
+.showPassBtn {
+  position: absolute;
+  top: 50%;
+  right: $sp-tn;
+  transform: translate(0, -50%);
+  color: $color-gr-2;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-gr-3;
+  }
 }

@@ -440,6 +440,10 @@
   border-radius: $br-tn;
   background-color: rgba(250, 250, 250, 0.2);
 
+  @media (min-width: 123rem) {
+    font-size: $fs-def;
+  }
+
   @media (max-width: 85.625rem) {
     font-size: 1.2rem;
   }
@@ -468,6 +472,11 @@
 
   line-height: $fs-sm;
   font-size: $fs-sm;
+
+  @media (min-width: 123rem) {
+    font-size: $fs-def;
+    line-height: $fs-def;
+  }
 
   @media (max-width: 85.625rem) {
     line-height: 1.4rem;

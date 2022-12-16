@@ -1,0 +1,20 @@
+@import "../../util/variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.switchBtn {
+  font-size: $fs-h2;
+  font-weight: $fw-b;
+  margin-top: $sp-sm-3;
+  padding: $sp-tn-2 $sp-sm-1;
+  border-radius: $br-sm;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($color-wh, 0.1);
+  }
+}

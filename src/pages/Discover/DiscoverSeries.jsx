@@ -13,7 +13,7 @@ const DiscoverSeries = ({ query }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${query}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
+        `https://api.themoviedb.org/3/tv/${query}?api_key=caf2c01855c455cdaa421e41ce07fa14&language=en-US&page=${page}`
       );
 
       if (!response.ok) {
@@ -35,7 +35,7 @@ const DiscoverSeries = ({ query }) => {
 
   const handleScroll = () => {
     if (
-      list.current.offsetHeight + list.current.scrollTop ===
+      list.current.offsetHeight + list.current.scrollTop + 1 >=
       list.current.scrollHeight
     ) {
       setLoading(true);

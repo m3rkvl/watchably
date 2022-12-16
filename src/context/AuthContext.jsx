@@ -82,7 +82,6 @@ export const AuthContextProvider = ({ children }) => {
       toast.success("You're logged in!");
     } catch (err) {
       toast.error(err.message);
-      dispatch(rightClick());
     }
   };
 

@@ -5,6 +5,7 @@ import { UserAuth } from "../../context/AuthContext";
 import { getMovieDetails } from "../../util/api";
 import movieDefPoster from "../../img/movie-poster-default.png";
 import toHM from "../../util/toHM";
+import { useMediaQuery } from "react-responsive";
 
 import classes from "./MovieDetail.module.scss";
 
@@ -21,6 +22,10 @@ const MovieDetail = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!user && user !== "loading...") navigate("/auth", { replace: true });
+  });
+
+  const phone = useMediaQuery({
+    query: "(max-width: 21.25rem)",
   });
 
   const movie = useLoaderData();
@@ -229,7 +234,75 @@ const MovieDetail = () => {
               </p>
             ))}
           </div>
-          {movie.crew.length > 1 && (
+          {phone && (
+            <div className={classes.phoneCrewCastContainer}>
+              {phone && movie.crew.length > 1 && (
+                <Fragment>
+                  <div className={classes.castHeaderContainer}>
+                    <h2 className={classes.castHeader}>Crew</h2>
+                    <span className={classes.questionMark}>?</span>
+                    <span className={classes.hoverToSee}>
+                      {" "}
+                      Hover to see full names
+                    </span>
+                  </div>
+                  <ul className={classes.crew}>
+                    {movie.crew.map((member) => (
+                      <li
+                        key={member.id + member.job}
+                        className={classes.crewMember}
+                      >
+                        <img
+                          className={classes.crewProfile}
+                          src={
+                            member.profile_path
+                              ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
+                              : movieDefPoster
+                          }
+                          alt={`${member.name} profile.`}
+                        />
+                        <p className={classes.crewName}>{member.name}</p>
+                        <p className={classes.crewJob}>{member.job}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </Fragment>
+              )}
+              {phone && movie.crew.length > 1 && (
+                <Fragment>
+                  <div className={classes.castHeaderContainer}>
+                    <h2 className={classes.castHeader}>Cast</h2>
+                    <span className={classes.questionMark}>?</span>
+                    <span className={classes.hoverToSee}>
+                      {" "}
+                      Hover to see full names
+                    </span>
+                  </div>
+                  <ul className={classes.cast}>
+                    {movie.cast.map((member) => (
+                      <li
+                        key={member.id + member.character}
+                        className={classes.castMember}
+                      >
+                        <img
+                          className={classes.castProfile}
+                          src={
+                            member.profile_path
+                              ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
+                              : movieDefPoster
+                          }
+                          alt={`${member.name} profile.`}
+                        />
+                        <p className={classes.castName}>{member.name}</p>
+                        <p className={classes.castJob}>{member.character}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </Fragment>
+              )}
+            </div>
+          )}
+          {!phone && movie.crew.length > 1 && (
             <Fragment>
               <div className={classes.castHeaderContainer}>
                 <h2 className={classes.castHeader}>Crew</h2>
@@ -261,7 +334,7 @@ const MovieDetail = () => {
               </ul>
             </Fragment>
           )}
-          {movie.crew.length > 1 && (
+          {!phone && movie.crew.length > 1 && (
             <Fragment>
               <div className={classes.castHeaderContainer}>
                 <h2 className={classes.castHeader}>Cast</h2>

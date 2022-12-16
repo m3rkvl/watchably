@@ -3,12 +3,20 @@ import React, { Fragment, useState } from "react";
 import classes from "./SignupForm.module.scss";
 import { UserAuth } from "../../../context/AuthContext";
 import { useNavigate } from "react-router";
+import ShowIcon from "../../../icons/ShowIcon";
+import UnShowIcon from "../../../icons/UnShowIcon";
 
 const SignupForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [err, setErr] = useState(false);
+  const [showPasswordCon, setShowPasswordCon] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [emailErr, setEmailErr] = useState(false);
+  const [passErr, setPassErr] = useState(false);
+  const [passConErr, setPassConErr] = useState(false);
 
   const navigate = useNavigate();
 
@@ -18,54 +26,111 @@ const SignupForm = () => {
     e.preventDefault();
     setErr(false);
     try {
-      if (password !== passwordConfirm)
+      if (
+        (email.trim() === "") |
+        (password.trim() === "") |
+        (passwordConfirm.trim() === "")
+      ) {
+        if (email.trim() === "") setEmailErr(true);
+        if (password.trim() === "") setPassErr(true);
+        if (passwordConfirm.trim() === "") setPassConErr(true);
+        throw new Error("Must fill all the fields.");
+      }
+      if (!email.trim().includes("@") || !email.trim().includes(".")) {
+        setEmailErr(true);
+        throw new Error("Please provide a valid email.");
+      }
+      if (password.length < 6) {
+        setPassErr(true);
+        throw new Error("Password must be at least 6 characters.");
+      }
+      if (password !== passwordConfirm) {
+        setPassErr(true);
+        setPassConErr(true);
         throw new Error("Your passwords must match.");
+      }
       await signUp(email, password);
       navigate("/search", { replace: true });
     } catch (e) {
       setErr(e.message);
-      console.log(e.message);
     }
+  };
+
+  const emailChangeHandler = (e) => {
+    setEmail((prev) => e.target.value);
+    setEmailErr(false);
+  };
+
+  const passChangeHandler = (e) => {
+    setPassword((prev) => e.target.value);
+    setPassErr(false);
+  };
+
+  const passConChangeHandler = (e) => {
+    setPasswordConfirm((prev) => e.target.value);
+    setPassConErr(false);
+  };
+
+  const showPasswordConHandler = () => {
+    setShowPasswordCon((prev) => !prev);
+  };
+
+  const showPasswordHandler = () => {
+    setShowPassword((prev) => !prev);
   };
 
   return (
     <Fragment>
-      {err && <p>{err}</p>}
       <form className={classes.signupForm} onSubmit={handleSignUp}>
+        {(emailErr || passErr || passConErr) && (
+          <p className={classes.error}>{err}</p>
+        )}
         <div className={classes.fieldHolder}>
           <input
             id="signupEmail"
-            className={classes.signupInput}
+            className={`${classes.signupInput} ${
+              emailErr ? classes.invalid : ""
+            }`}
             placeholder=" "
             type="email"
             autoComplete="off"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={emailChangeHandler}
           />
           <label className={classes.signupLabel} htmlFor="signupEmail">
             Email
           </label>
         </div>
         <div className={classes.fieldHolder}>
+          <div onClick={showPasswordHandler} className={classes.showPassBtn}>
+            {showPassword ? <UnShowIcon /> : <ShowIcon />}
+          </div>
           <input
             id="signupPassword"
-            className={classes.signupInput}
+            className={`${classes.signupInput} ${
+              passErr ? classes.invalid : ""
+            }`}
             placeholder=" "
-            type="password"
+            type={showPassword ? "text" : "password"}
             autoComplete="off"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={passChangeHandler}
           />
           <label className={classes.signupLabel} htmlFor="signupPassword">
             Password
           </label>
         </div>
         <div className={classes.fieldHolder}>
+          <div onClick={showPasswordConHandler} className={classes.showPassBtn}>
+            {showPasswordCon ? <UnShowIcon /> : <ShowIcon />}
+          </div>
           <input
             id="signupPasswordConfirm"
-            className={classes.signupInput}
+            className={`${classes.signupInput} ${
+              passConErr ? classes.invalid : ""
+            }`}
             placeholder=" "
-            type="password"
+            type={showPasswordCon ? "text" : "password"}
             autoComplete="off"
-            onChange={(e) => setPasswordConfirm(e.target.value)}
+            onChange={passConChangeHandler}
           />
           <label
             className={classes.signupLabel}
@@ -81,9 +146,6 @@ const SignupForm = () => {
           >
             <span>Sign up</span>
           </button>
-          {/* <Link to="/auth" className={`${classes.btn} ${classes.forgotBtn}`}>
-            <span>Forgot Password?</span>
-          </Link> */}
         </div>
       </form>
     </Fragment>

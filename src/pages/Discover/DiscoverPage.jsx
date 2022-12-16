@@ -1,26 +1,30 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./DiscoverPage.module.scss";
+import movieDefCover from "../../img/movie-discover-default.png";
+import seriesDefCover from "../../img/series-discover-default.png";
 
 const DiscoverPage = () => {
   const [imgPopMov, setImgPopMov] = useState("");
   const [imgPopSer, setImgPopSer] = useState("");
   const [imgTopMov, setImgTopMov] = useState("");
   const [imgTopSer, setImgTopSer] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       const responsePopMov = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/popular?api_key=caf2c01855c455cdaa421e41ce07fa14&language=en-US&page=1`
       );
       const responsePopSer = await fetch(
-        `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/tv/popular?api_key=caf2c01855c455cdaa421e41ce07fa14&language=en-US&page=1`
       );
       const responseTopMov = await fetch(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=caf2c01855c455cdaa421e41ce07fa14&language=en-US&page=1`
       );
       const responseTopSer = await fetch(
-        `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/tv/top_rated?api_key=caf2c01855c455cdaa421e41ce07fa14&language=en-US&page=1`
       );
 
       if (
@@ -43,10 +47,13 @@ const DiscoverPage = () => {
       setImgPopSer(dataPopSer.results[0].backdrop_path);
       setImgTopMov(dataTopMov.results[0].backdrop_path);
       setImgTopSer(dataTopSer.results[0].backdrop_path);
+      setLoading(false);
     };
 
     fetchData();
   }, []);
+
+  console.log(`https://image.tmdb.org/t/p/w500${imgPopMov}`);
 
   return (
     <div className={classes.container}>
@@ -57,7 +64,11 @@ const DiscoverPage = () => {
           </div>
           <img
             className={classes.background}
-            src={`https://image.tmdb.org/t/p/w500${imgPopMov}`}
+            src={
+              loading
+                ? movieDefCover
+                : `https://image.tmdb.org/t/p/w500${imgPopMov}`
+            }
             alt="background for popular movies link"
           />
         </div>
@@ -69,7 +80,11 @@ const DiscoverPage = () => {
           </div>
           <img
             className={classes.background}
-            src={`https://image.tmdb.org/t/p/w500${imgPopSer}`}
+            src={
+              loading
+                ? seriesDefCover
+                : `https://image.tmdb.org/t/p/w500${imgPopSer}`
+            }
             alt="background for popular series link"
           />
         </div>
@@ -81,7 +96,11 @@ const DiscoverPage = () => {
           </div>
           <img
             className={classes.background}
-            src={`https://image.tmdb.org/t/p/w500${imgTopMov}`}
+            src={
+              loading
+                ? movieDefCover
+                : `https://image.tmdb.org/t/p/w500${imgTopMov}`
+            }
             alt="background for top rated movies link"
           />
         </div>
@@ -93,7 +112,11 @@ const DiscoverPage = () => {
           </div>
           <img
             className={classes.background}
-            src={`https://image.tmdb.org/t/p/w500${imgTopSer}`}
+            src={
+              loading
+                ? seriesDefCover
+                : `https://image.tmdb.org/t/p/w500${imgTopSer}`
+            }
             alt="background for top rated series link"
           />
         </div>

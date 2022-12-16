@@ -20,6 +20,15 @@ const NavBtnInner = (props) => {
       className={({ isActive }) => (isActive ? activeClass : inactiveClass)}
       draggable="false"
     >
+      {icon}
+    </NavLink>
+  );
+};
+
+export default NavBtnInner;
+
+/*
+
       {props.role === "me" && user.photoURL ? (
         <img
           className={classes.userPhoto}
@@ -29,8 +38,5 @@ const NavBtnInner = (props) => {
       ) : (
         icon
       )}
-    </NavLink>
-  );
-};
 
-export default NavBtnInner;
+*/

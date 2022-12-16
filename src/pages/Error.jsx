@@ -1,19 +1,37 @@
-import { Fragment } from "react";
-import { useRouteError } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useRouteError } from "react-router-dom";
+import classes from "./Error.module.scss";
 
 function ErrorPage() {
+  const [count, setCount] = useState(10);
   const error = useRouteError();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prev) => prev - 1);
+    }, 1000);
+
+    const timeout = setTimeout(() => {
+      navigate("/discover");
+    }, 10000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, []);
 
   const errorTxt = `${error.status}: ${error.statusText}`;
 
   return (
-    <Fragment>
-      <h1>Navbar</h1>
+    <div className={classes.container}>
+      <h1>Something went wrong...</h1>
       <main id="error-content">
-        <h1>An error occurred!</h1>
-        <p>{errorTxt}</p>
+        <h2>{errorTxt}</h2>
+        <p>You'll be redirected to /discover in {count}...</p>
       </main>
-    </Fragment>
+    </div>
   );
 }
 

@@ -7,7 +7,7 @@
   max-height: calc(100vh - 16rem);
   width: calc(100vw - 9.6rem);
 
-  @media (max-width: 60.3125rem) {
+  @media (max-width: 65rem) {
     max-height: 100%;
     display: flex;
     flex-direction: column;
@@ -23,6 +23,19 @@
   min-height: 0;
   justify-self: end;
   padding: $sp-sm-3 $sp-md-1;
+
+  @media (max-width: 65rem) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -5;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .noPosterTxt {
@@ -52,18 +65,12 @@
   border: 0.15rem inset rgba(255, 255, 255, 0.1);
 
   @media (max-width: 65rem) {
-    height: auto;
-    width: 100%;
-  }
-
-  @media (max-width: 60.3125rem) {
-    height: calc(100vw - 60rem);
+    z-index: -5;
+    opacity: 0.1;
     width: auto;
-  }
-
-  @media (max-width: 43.75rem) {
-    width: 25rem;
-    height: auto;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
   }
 }
 
@@ -76,10 +83,11 @@
   align-items: flex-start;
   width: calc(50vw - 4.8rem);
 
-  @media (max-width: 60.3125rem) {
+  @media (max-width: 65rem) {
     width: calc(100vw - 4.8rem);
     justify-self: center;
     align-items: center;
+    margin-top: $sp-sm-3;
   }
 }
 
@@ -159,6 +167,10 @@
   display: flex;
   gap: $sp-tn;
   margin-bottom: $sp-sm-1;
+
+  // @media (max-width: 21.25rem) {
+  //   margin-bottom: $sp-tn;
+  // }
 }
 
 .genre {
@@ -169,6 +181,12 @@
   border-radius: $br-def;
   border: 0.15rem inset rgba(255, 255, 255, 0.1);
   cursor: default;
+}
+
+.phoneCrewCastContainer {
+  display: flex;
+  gap: $sp-sm-1;
+  align-items: center;
 }
 
 .castHeaderContainer {
@@ -185,8 +203,26 @@
     visibility: visible;
     color: $color-gr-2;
   }
-  @media (max-width: 60.3125rem) {
+
+  @media (max-width: 65rem) {
     margin-left: -18rem;
+  }
+
+  @media (max-width: 23.125rem) {
+    margin-left: -14rem;
+
+    &:hover .questionMark {
+      color: none;
+    }
+
+    &:hover .hoverToSee {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  @media (max-width: 21.25rem) {
+    display: none;
   }
 }
 
@@ -216,6 +252,10 @@
   background-color: rgba($color-wh, 0.1);
   margin-bottom: 0.4rem;
   cursor: default;
+
+  @media (max-width: 23.125rem) {
+    opacity: 0;
+  }
 }
 
 .hoverToSee {
@@ -234,6 +274,10 @@
   margin-left: -0.6rem;
 
   transition: all 0.4s;
+
+  @media (max-width: 23.125rem) {
+    opacity: 0;
+  }
 }
 
 .crew,
@@ -247,14 +291,28 @@
   margin-bottom: $sp-sm-2;
   flex-wrap: wrap;
   border: 0.1rem inset rgba(255, 255, 255, 0.1);
-  @media (max-width: 60.3125rem) {
+  @media (max-width: 65rem) {
     align-self: center;
     gap: $sp-sm-1;
+  }
+
+  @media (max-width: 23.125rem) {
+    gap: $sp-tn-2;
+    padding: $sp-tn-2;
+  }
+
+  @media (max-width: 21.25rem) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: $sp-sm-1;
   }
 }
 
 .cast {
-  margin-bottom: $sp-sm-3;
+  margin-bottom: $sp-tn;
+  @media (max-width: 21.25rem) {
+    margin-bottom: $sp-sm-1;
+  }
 }
 
 .crewMember,
@@ -273,6 +331,17 @@
       max-width: 20rem;
     }
   }
+
+  @media (max-width: 23.125rem) {
+    &:hover {
+      & .crewName,
+      & .castName,
+      & .crewJob,
+      & .castJob {
+        max-width: 6.4rem;
+      }
+    }
+  }
 }
 
 .crewProfile,
@@ -285,6 +354,15 @@
   filter: drop-shadow(0 0 0.4rem rgba(0, 0, 0, 0.2)) grayscale(50%);
   margin-bottom: $sp-tn;
   border: 0.1rem inset rgba(255, 255, 255, 0.1);
+
+  @media (max-width: 23.125rem) {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+
+  @media (max-width: 21.25rem) {
+    display: none;
+  }
 }
 
 .crewName,
@@ -296,6 +374,10 @@
   font-size: $fs-sm-2;
   margin-bottom: $sp-tn-3;
   transition: all 1s;
+
+  @media (max-width: 21.25rem) {
+    font-size: $fs-sm;
+  }
 }
 
 .crewJob,
@@ -307,6 +389,10 @@
   font-size: $fs-sm-2;
   color: $color-gr-2;
   transition: all 1s;
+
+  @media (max-width: 21.25rem) {
+    font-size: $fs-sm;
+  }
 }
 
 .overviewContainer {

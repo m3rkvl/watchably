@@ -16,7 +16,6 @@ const MePage = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [username, setUsername] = useState("");
-  const [photoUrl, setPhotoUrl] = useState("");
   const [email, setEmail] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [password, setPassword] = useState("");
@@ -31,12 +30,8 @@ const MePage = () => {
       if (username.length > 3) {
         data.displayName = username;
       }
-      if (photoUrl.length > 3) {
-        data.photoURL = photoUrl;
-      }
       await updateUserProfile(data);
       setUsername("");
-      setPhotoUrl("");
     } catch (err) {
       console.log(err.message);
     }
@@ -130,13 +125,7 @@ const MePage = () => {
       </div>
       <div className={classes.header}>
         <div className={classes.userInfo}>
-          {user && user !== "loading..." && user.photoURL ? (
-            <img
-              className={classes.userPhoto}
-              src={user.photoURL}
-              alt="Your avatar."
-            />
-          ) : (
+          {user && user !== "loading..." && (
             <div className={classes.userIcon}>
               <UserIcon />
             </div>
@@ -168,20 +157,6 @@ const MePage = () => {
               />
               <label className={classes.label} htmlFor="updateName">
                 Username
-              </label>
-            </div>
-            <div className={classes.fieldHolder}>
-              <input
-                id="updatePhoto"
-                className={classes.input}
-                placeholder=" "
-                type="text"
-                autoComplete="off"
-                onChange={(e) => setPhotoUrl(e.target.value)}
-                value={photoUrl}
-              />
-              <label className={classes.label} htmlFor="updatePhoto">
-                Photo URL
               </label>
             </div>
             <button
@@ -256,3 +231,17 @@ const MePage = () => {
 };
 
 export default MePage;
+
+/*
+          {user && user !== "loading..." && user.photoURL ? (
+            <img
+              className={classes.userPhoto}
+              src={user.photoURL}
+              alt="Your avatar."
+            />
+          ) : (
+            <div className={classes.userIcon}>
+              <UserIcon />
+            </div>
+          )}
+*/

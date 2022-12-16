@@ -1,6 +1,48 @@
 @import "../../util/variables";
 @import "../../util/mixins";
 
+.movieCardContainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: $br-sm;
+  transition: all 0.3s;
+  z-index: 9999;
+  filter: drop-shadow(0 0 0.4rem rgba(0, 0, 0, 0.4));
+  border: 0.1rem inset rgba(255, 255, 255, 0.1);
+
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+
+    & .noPosterTxt {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    @media (max-width: 48rem) {
+      transform: scale(1);
+    }
+
+    & .cardCover {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  @media (max-width: 57rem) {
+    &:hover {
+      transform: scale(1);
+
+      & .noPosterTxt {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
 .link {
   user-select: none;
 }
@@ -93,6 +135,12 @@
   right: $sp-sm-1;
   display: flex;
   gap: $sp-sm-1;
+
+  @media (max-width: 27rem) {
+    top: $sp-sm-3;
+    right: $sp-sm-3;
+    gap: $sp-sm-3;
+  }
 }
 
 .btn {
@@ -109,6 +157,13 @@
   backdrop-filter: blur(1rem);
   z-index: 9998;
   transition: all 0.2s;
+
+  cursor: pointer;
+
+  @media (max-width: 27rem) {
+    width: 5.2rem;
+    height: 5.2rem;
+  }
 }
 
 .toWatchActive {
@@ -141,24 +196,90 @@
   color: rgba($color-t-d, 0.6);
 }
 
-.userRating {
-  border: none;
-  display: flex;
+.userRateContainer {
+  position: relative;
+  width: 100%;
+  min-width: 5.2rem;
+  max-width: 5.2rem;
+  border: 1px solid var(--select-border);
+  border-radius: $br-bg;
+  padding: $sp-tn-3 $sp-tn;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  font-size: $fs-def;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-areas: "select";
   align-items: center;
-  justify-content: center;
-  width: 3.6rem;
-  height: 3.6rem;
-  font-size: 2rem;
-  padding: $sp-tn;
-  border-radius: 50%;
-  color: rgba($color-wh, 0.8);
-  background-color: rgba(#f59e0b, 0.6);
-  box-shadow: 0 0 0.8rem rgba($color-bl, 0.2);
-  border: 0.15rem inset rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(1rem);
+  background: linear-gradient(
+    45deg,
+    rgba($color-gr-3, 0.6) 0%,
+    rgba($color-gr-2, 0.6) 75%,
+    rgba($color-gr-3, 0.6) 100%
+  );
+  border: 0.1rem inset rgba(255, 255, 255, 0.1);
   z-index: 9998;
-  transform: scale(1.2);
-  cursor: default;
+
+  @media (max-width: 27rem) {
+    min-width: 7.2rem;
+    max-width: 7.2rem;
+  }
+
+  &::after,
+  & select {
+    grid-area: select;
+  }
+
+  &::after {
+    content: "";
+    width: 0.9rem;
+    height: 0.6rem;
+    margin-right: 0.2rem;
+    background-color: $color-p;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    justify-self: end;
+  }
+
+  & select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    margin-left: 0.2rem;
+    font-weight: 600;
+    height: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+    color: $color-p;
+    width: 100%;
+
+    &:disabled {
+      cursor: default;
+    }
+
+    & option:hover {
+      background-color: $color-gr-1;
+    }
+
+    &:focus + .userRateFocus {
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      border: 2px solid var(--select-focus);
+      border-radius: inherit;
+    }
+
+    &::-ms-expand {
+      display: none;
+    }
+  }
 }
 
 .cardCover {
@@ -328,6 +449,10 @@
   border-radius: $br-tn;
   background-color: rgba(250, 250, 250, 0.2);
 
+  @media (min-width: 123rem) {
+    font-size: $fs-sm;
+  }
+
   @media (max-width: 24.75rem) {
     flex-wrap: wrap;
     gap: $sp-tn-3;
@@ -348,6 +473,11 @@
 
   line-height: $fs-sm;
   font-size: $fs-sm;
+
+  @media (min-width: 123rem) {
+    font-size: $fs-def;
+    line-height: $fs-def;
+  }
 
   @media (max-width: 85.625rem) {
     line-height: 1.4rem;
