@@ -98,7 +98,6 @@ export async function getSeriesDetails(id) {
 
   mainData.cast = creditsDataCast;
   mainData.crew = creditsDataCrew;
-  console.log(mainData);
 
   return mainData;
 }

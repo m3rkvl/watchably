@@ -53,8 +53,6 @@ const DiscoverPage = () => {
     fetchData();
   }, []);
 
-  console.log(`https://image.tmdb.org/t/p/w500${imgPopMov}`);
-
   return (
     <div className={classes.container}>
       <Link to="/discover/popular/movies">

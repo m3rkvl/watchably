@@ -173,7 +173,6 @@ const MovieDetail = () => {
     setSavedFavorite(state.favorites.some((e) => e.id === movie.id));
     setUserRating((prev) => {
       if (state.watched.find((e) => e.id === movie.id)) {
-        console.log(state.watched.find((e) => e.id === movie.id).user_rating);
         return state.watched.find((e) => e.id === movie.id).user_rating;
       } else {
         return "Not Rated";
