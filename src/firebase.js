@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_ID,
+  apiKey: "AIzaSyCXo4o3Jpf2FhSnxlXSKTDgPpLlXTlTX08",
+  authDomain: "watchably.firebaseapp.com",
+  projectId: "watchably",
+  storageBucket: "watchably.appspot.com",
+  messagingSenderId: "964038844481",
+  appId: "1:964038844481:web:f6eb4b972cdfd460fee6c0",
 };
 
 // Initialize Firebase
