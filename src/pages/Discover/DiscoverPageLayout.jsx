@@ -5,6 +5,7 @@ import { UserAuth } from "../../context/AuthContext";
 const DiscoverPageLayout = () => {
   const { user } = UserAuth();
   const navigate = useNavigate();
+  document.title = `Watchably • Discover`;
   useEffect(() => {
     if (!user && user !== "loading...") navigate("/auth", { replace: true });
   });

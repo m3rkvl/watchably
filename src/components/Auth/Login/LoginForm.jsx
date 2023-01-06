@@ -31,7 +31,17 @@ const LoginForm = () => {
       navigate("/library");
     } catch (e) {
       setErr(e.message);
-      console.log(e.message);
+    }
+  };
+
+  const handleDemoSignIn = async (e) => {
+    e.preventDefault();
+    setErr(false);
+    try {
+      await signIn("demo-user@outlook.com", "demo-user1234");
+      navigate("/library");
+    } catch (e) {
+      setErr(e.message);
     }
   };
 
@@ -40,11 +50,9 @@ const LoginForm = () => {
     setErr(false);
     try {
       await resetPassword(email.current.value);
-      // setEmail("");
       dispatch(toggleIsLoggingIn());
     } catch (e) {
       setErr(e.message);
-      console.log(e.message);
     }
   };
 
@@ -88,19 +96,30 @@ const LoginForm = () => {
               Password
             </label>
           </div>
-          <div className={classes.actions}>
-            <button
-              type="submit"
-              className={`${classes.btn} ${classes.submitBtn}`}
-            >
-              <span>Login</span>
-            </button>
+          <div className={classes.actionsContainer}>
+            <div className={classes.actions}>
+              <button
+                type="submit"
+                className={`${classes.btn} ${classes.submitBtn}`}
+              >
+                <span>Login</span>
+              </button>
+              <button
+                type="button"
+                onClick={loggingInHandler}
+                className={`${classes.btn} ${classes.forgotBtn}`}
+              >
+                <span>Forgot Password?</span>
+              </button>
+            </div>
             <button
               type="button"
-              onClick={loggingInHandler}
-              className={`${classes.btn} ${classes.forgotBtn}`}
+              onClick={(e) => {
+                handleDemoSignIn(e);
+              }}
+              className={`${classes.btn} ${classes.demoBtn}`}
             >
-              <span>Forgot Password?</span>
+              <span>Demo User</span>
             </button>
           </div>
         </form>

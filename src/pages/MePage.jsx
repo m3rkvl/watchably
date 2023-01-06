@@ -22,6 +22,8 @@ const MePage = () => {
   const [changingEmail, setChangingEmail] = useState(false);
   const [changingPassword, setChangingPassword] = useState(false);
 
+  document.title = `Watchably • Account`;
+
   const updateProfileHandler = async (e) => {
     e.preventDefault();
     try {

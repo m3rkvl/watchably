@@ -35,6 +35,8 @@ const MovieDetail = () => {
   const [userRating, setUserRating] = useState("Not Rated");
   const state = useSelector((state) => state.auth.userData.movies);
 
+  document.title = `Watchably • ${movie.title}`;
+
   //prettier-ignore
   const posterPath = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : movieDefPoster;
   const genres = movie.genres?.map((genre) => genre.name);

@@ -10,6 +10,8 @@ const DiscoverSeries = ({ query }) => {
   const [loading, setLoading] = useState(false);
   const list = useRef();
 
+  document.title = `Watchably • Discover Series`;
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(

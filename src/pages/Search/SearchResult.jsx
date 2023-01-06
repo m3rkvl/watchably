@@ -39,6 +39,8 @@ const SearchResult = () => {
     setPageState(1);
   };
 
+  document.title = `Watchably • ${searchQuery}`;
+
   useEffect(() => {
     if (!user && user !== "loading...") {
       navigate("/auth", { replace: true });

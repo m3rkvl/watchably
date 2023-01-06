@@ -293,8 +293,6 @@ export const AuthContextProvider = ({ children }) => {
             },
           })
         );
-        // console.log(currentUser);
-        // console.log(state);
       }
     });
     return () => {

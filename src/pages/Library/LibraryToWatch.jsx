@@ -13,6 +13,8 @@ const LibraryToWatch = () => {
   //prettier-ignore
   const seriesToWatch = uniqueArray(series.toWatch.map((tw) => ({ ...tw, toWatch: true, watched: false, favorite: false, })).reverse());
 
+  document.title = `Watchably • To Watch`;
+
   return (
     <PanelsLayout
       left={<LibraryList items={moviesToWatch} page="toWatch" />}

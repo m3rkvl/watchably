@@ -97,6 +97,17 @@
   );
 }
 
+.demoBtn {
+  @include btnBackgroundColorChange(
+    $color-gr-4,
+    $color-gr-3,
+    $color-wh,
+    $color-p,
+    $br-sm
+  );
+  box-shadow: none;
+}
+
 .showPassBtn {
   position: absolute;
   top: 50%;
@@ -108,4 +119,11 @@
   &:hover {
     color: $color-gr-3;
   }
+}
+
+.actionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-sm-3;
+  align-items: flex-start;
 }

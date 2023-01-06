@@ -34,6 +34,8 @@ const SeriesDetail = () => {
   const [userRating, setUserRating] = useState("Not Rated");
   const state = useSelector((state) => state.auth.userData.series);
 
+  document.title = `Watchably • ${series.name}`;
+
   const posterPath = series.poster_path
     ? `https://image.tmdb.org/t/p/w500${series.poster_path}`
     : seriesDefPoster;

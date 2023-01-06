@@ -15,6 +15,8 @@ const LibraryMain = () => {
   //prettier-ignore
   const moviesFavorites = movies.favorites.map(f => ({...f, toWatch: false, watched: true, favorite: true}));
 
+  console.log(moviesWatched);
+
   //prettier-ignore
   const seriesWatched = series.watched.filter((w) => series.favorites.every((f) => f.id !== w.id)).map((w) => ({ ...w, toWatch: false, watched: true, favorite: false }));
   //prettier-ignore
@@ -27,6 +29,8 @@ const LibraryMain = () => {
   //prettier-ignore
   const seriesFinal = uniqueArray(seriesWatched.concat(seriesFavorites, seriesToWatch).reverse());
   // const seriesFinal = uniqueArray(seriesWatched.concat(seriesFavorites, seriesToWatch).sort((a,b) => b.listed_at - a.listed_at));
+
+  document.title = `Watchably • Library`;
 
   return (
     <PanelsLayout

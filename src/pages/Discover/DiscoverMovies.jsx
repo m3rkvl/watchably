@@ -10,6 +10,8 @@ const DiscoverMovies = ({ query }) => {
   const [loading, setLoading] = useState(false);
   const list = useRef();
 
+  document.title = `Watchably • Discover Movies`;
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(

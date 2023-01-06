@@ -17,6 +17,8 @@ const LibraryMovies = () => {
   //prettier-ignore
   const moviesWatchedFinal = uniqueArray(moviesWatched.concat(moviesFavorites).reverse());
 
+  document.title = `Watchably • Movies Saved`;
+
   return (
     <PanelsLayout
       left={<LibraryList items={moviesToWatchFinal} page="movies" />}

@@ -13,6 +13,8 @@ const LibraryFavorites = () => {
   //prettier-ignore
   const seriesFavorites = uniqueArray(series.favorites.map(f => ({...f, toWatch: false, watched: true, favorite: true})).reverse());
 
+  document.title = `Watchably • Favorites`;
+
   return (
     <PanelsLayout
       left={<LibraryList items={moviesFavorites} page="favorites" />}

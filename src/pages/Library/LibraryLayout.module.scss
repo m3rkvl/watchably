@@ -166,8 +166,8 @@
 .toWatch {
   @include btnBackgroundColorChange(
     $color-wh,
-    $color-p,
-    $color-p,
+    $color-s,
+    $color-s,
     $color-wh,
     $br-sm
   );
@@ -175,8 +175,8 @@
 
 .activeToWatch {
   @include btnBackgroundColorChange(
-    $color-p,
-    $color-p-d,
+    $color-s,
+    $color-s-d,
     $color-wh,
     $color-wh,
     $br-sm
@@ -186,8 +186,8 @@
 .watched {
   @include btnBackgroundColorChange(
     $color-wh,
-    $color-s,
-    $color-s,
+    $color-p,
+    $color-p,
     $color-wh,
     $br-sm
   );
@@ -195,8 +195,8 @@
 
 .activeWatched {
   @include btnBackgroundColorChange(
-    $color-s,
-    $color-s-d,
+    $color-p,
+    $color-p-d,
     $color-wh,
     $color-wh,
     $br-sm

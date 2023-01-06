@@ -20,6 +20,8 @@ const AuthPage = () => {
 
   console.log(onePanel);
 
+  document.title = `Watchably • Welcome!`;
+
   let rtrn;
 
   if (!onePanel) {

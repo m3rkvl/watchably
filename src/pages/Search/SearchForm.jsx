@@ -16,6 +16,8 @@ const SearchForm = () => {
     if (!user && user !== "loading...") navigate("/auth", { replace: true });
   });
 
+  document.title = `Watchably • Search`;
+
   const [query, setQuery] = useState("");
 
   const inputHandler = (e) => {

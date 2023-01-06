@@ -7,6 +7,8 @@ function ErrorPage() {
   const error = useRouteError();
   const navigate = useNavigate();
 
+  document.title = `Watchably • Something Went Wrong`;
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCount((prev) => prev - 1);
