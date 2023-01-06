@@ -1,5 +1,5 @@
 ## Watchably
-An app for keeping a personal watchlist...
+An app for keeping a personal watchlist.
 
 ## Project Screenshots 
 
