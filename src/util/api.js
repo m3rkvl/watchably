@@ -1,5 +1,3 @@
-const APIKey = "caf2c01855c455cdaa421e41ce07fa14";
-
 export async function getSearchResults(query, page) {
   const queryStr = `query=${query}`;
   const pageStr = `page=${page}`;
